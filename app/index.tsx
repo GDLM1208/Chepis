@@ -1,17 +1,22 @@
-import { ScrollView, Text, View } from "react-native";
-import styles from "../constants/styles";
+import { supabase } from "../lib/supabaseClient";
+import { Redirect } from "expo-router";
+import { useEffect, useState } from "react";
 
 export default function Index() {
-  return (
-    <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
-      <View style={{ padding: 20 }}>
-        <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#4C3FAF' }}>
-          Bienvenido a Chepi
-        </Text>
-        <Text style={{ fontSize: 16, marginTop: 10, color: '#666' }}>
-          Tu asistente para el equilibrio digital
-        </Text>
-      </View>
-    </ScrollView>
-  );
+  const [checking, setChecking] = useState(true);
+  const [logged, setLogged] = useState(false);
+
+  useEffect(() => {
+    async function checkSession() {
+      const { data } = await supabase.auth.getSession();
+      setLogged(!!data.session);
+      setChecking(false);
+    }
+
+    checkSession();
+  }, []);
+
+  if (checking) return null;
+
+  return logged ? <Redirect href="/home" /> : <Redirect href="/login" />;
 }
