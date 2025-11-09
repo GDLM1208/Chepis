@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gana Tiempo - Cargando</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+	 background: linear-gradient(135deg, #5B4BA8 0%, #4C3FAF 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .loading-container {
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Logo container con animación de aparición */
+        .logo-wrapper {
+            background: white;
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            margin-bottom: 40px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .logo-img {
+            width: 200px;
+            height: auto;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        /* Texto de carga */
+        .loading-text {
+            color: white;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+
+        .loading-subtext {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+            margin-bottom: 32px;
+            animation: fadeIn 1s ease-out 0.5s both;
+        }
+
+        /* Barra de progreso */
+        .progress-bar-container {
+            width: 280px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 0 auto 24px;
+            animation: fadeIn 1s ease-out 0.7s both;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: white;
+            border-radius: 10px;
+            animation: loading 2s ease-in-out infinite;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Puntos de carga animados */
+        .loading-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            animation: fadeIn 1s ease-out 0.9s both;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            animation: bounce 1.4s ease-in-out infinite;
+        }
+
+        .dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        /* Círculos de fondo decorativos */
+        .bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .bg-circle-1 {
+            width: 300px;
+            height: 300px;
+            background: white;
+            top: -100px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .bg-circle-2 {
+            width: 200px;
+            height: 200px;
+            background: white;
+            bottom: -50px;
+            right: -50px;
+            animation-delay: 2s;
+        }
+
+        .bg-circle-3 {
+            width: 150px;
+            height: 150px;
+            background: white;
+            top: 50%;
+            right: 10%;
+            animation-delay: 4s;
+        }
+
+        /* Animaciones */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes loading {
+            0% {
+                width: 0%;
+                margin-left: 0%;
+            }
+            50% {
+                width: 70%;
+                margin-left: 15%;
+            }
+            100% {
+                width: 0%;
+                margin-left: 100%;
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .logo-wrapper {
+                padding: 30px;
+            }
+
+            .logo-img {
+                width: 150px;
+            }
+
+            .loading-text {
+                font-size: 20px;
+            }
+
+            .progress-bar-container {
+                width: 220px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Círculos decorativos de fondo -->
+    <div class="bg-circle bg-circle-1"></div>
+    <div class="bg-circle bg-circle-2"></div>
+    <div class="bg-circle bg-circle-3"></div>
+
+    <div class="loading-container">
+	    <img style="width: 420px;" src="./logo.png" alt="¡Chepi! Logo" class="logo-img">
+        <!-- Texto de carga -->
+        <h2 class="loading-text">Cargando Chepi App</h2>
+        <p class="loading-subtext">Preparando tu experiencia de bienestar digital...</p>
+
+        <!-- Barra de progreso -->
+        <div class="progress-bar-container">
+            <div class="progress-bar"></div>
+        </div>
+
+        <!-- Puntos animados -->
+        <div class="loading-dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+    <script>
+        // Simular carga y redirigir (opcional)
+        setTimeout(() => {
+            // Aquí podrías redirigir a la app principal
+            console.log('¡Carga completa!');
+        }, 3000);
+    </script>
+</body>
+</html>" 
+        </div>
+
+        <!-- Texto de carga -->
+        <h2 class="loading-text">Cargando Gana Tiempo</h2>
+        <p class="loading-subtext">Preparando tu experiencia de bienestar digital...</p>
+
+        <!-- Barra de progreso -->
+        <div class="progress-bar-container">
+            <div class="progress-bar"></div>
+        </div>
+
+        <!-- Puntos animados -->
+        <div class="loading-dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+</body>
+</html>
