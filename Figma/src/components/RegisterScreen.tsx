@@ -11,7 +11,6 @@ export function RegisterScreen({ onNavigate, onLoginSuccess }: RegisterScreenPro
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    // CAMBIO: Fondo de gradiente a color sólido
     <div className="h-full w-full bg-[#0c2052] flex flex-col items-center justify-center px-8 text-white">
       {/* Logo */}
       <img
@@ -38,9 +37,8 @@ export function RegisterScreen({ onNavigate, onLoginSuccess }: RegisterScreenPro
           <label className="text-xs font-bold uppercase text-white/70">NOMBRE</label>
           <input
             type="text"
-            placeholder="Jiara Martins"
-            // CAMBIO: Inputs un poco más oscuros para contrastar
-            className="w-full p-4 mt-2 rounded-lg bg-white/5 backdrop-blur-sm text-white placeholder-white/70 border border-white/10 focus:border-white/50 focus:outline-none"
+            placeholder=""
+            className="w-full p-4 mt-2 rounded-lg bg-transparent text-white placeholder-white/70 border border-sky-400/50 focus:border-sky-400 focus:outline-none"
           />
         </div>
 
@@ -60,8 +58,8 @@ export function RegisterScreen({ onNavigate, onLoginSuccess }: RegisterScreenPro
           <div className="relative">
             <input
               type={showPassword ? 'text' : 'password'}
-              placeholder="******"
-              className="w-full p-4 mt-2 rounded-lg bg-white/5 backdrop-blur-sm text-white placeholder-white/70 border border-white/10 focus:border-white/50 focus:outline-none"
+              placeholder=""
+              className="w-full p-4 mt-2 rounded-lg bg-transparent text-white placeholder-white/70 border border-sky-400/50 focus:border-sky-400 focus:outline-none"
             />
             <button
               onClick={() => setShowPassword(!showPassword)}
