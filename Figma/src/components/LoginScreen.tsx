@@ -11,16 +11,16 @@ export function LoginScreen({ onNavigate, onLoginSuccess }: LoginScreenProps) {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <div className="h-full w-full bg-[#0c2052] flex flex-col items-center justify-center px-8 text-white">
+    <div className="h-full w-full bg-linear-to-b from-[#0c2052] to-sky-500 flex flex-col items-center justify-center px-8 text-white">
       <img
         src="/logo.png"
         alt="Chepi Logo"
         className="mt-6 h-32 mx-auto mb-8"
       />
 
-      <h2 className="text-4xl font-bold mb-2">Log In</h2>
+      <h2 className="text-4xl font-bold mb-2">Iniciar Sesión</h2>
       <p className="text-white/80 mb-8">
-        New to Chepi?{' '}
+        ¿Nuevo en Chepi?{' '}
         <button
           onClick={() => onNavigate('register')}
           className="font-bold underline"
@@ -32,24 +32,24 @@ export function LoginScreen({ onNavigate, onLoginSuccess }: LoginScreenProps) {
       <div className="w-full space-y-4">
         {/* CAMPO DE EMAIL */}
         <div>
-          <label className="text-xs font-bold uppercase text-white/70">EMAIL</label>
+          <label className="text-xs font-bold uppercase text-white/70">CORREO ELECTRÓNICO</label>
           {/* CAMBIO: Estilo transparente con borde */}
           <input
             type="email"
             placeholder=""
-            className="w-full p-4 mt-2 rounded-lg bg-transparent text-white placeholder-white/70 border border-sky-400/50 focus:border-sky-400 focus:outline-none"
+            className="w-full p-4 mt-2 rounded-lg bg-white/25 text-white placeholder-white/70 border border-sky-400/50 focus:border-sky-400 focus:outline-none"
           />
         </div>
 
         {/* CAMPO DE CONTRASEÑA */}
         <div>
-          <label className="text-xs font-bold uppercase text-white/70">PASSWORD</label>
+          <label className="text-xs font-bold uppercase text-white/70">CONTRASEÑA</label>
           <div className="relative">
             {/* CAMBIO: Estilo transparente con borde */}
             <input
               type={showPassword ? 'text' : 'password'}
               placeholder=""
-              className="w-full p-4 mt-2 rounded-lg bg-transparent text-white placeholder-white/70 border border-sky-400/50 focus:border-sky-400 focus:outline-none"
+              className="w-full p-4 mt-2 rounded-lg bg-white/25 text-white placeholder-white/70 border border-sky-400/50 focus:border-sky-400 focus:outline-none"
             />
             {/* CAMBIO: Icono del ojo claro */}
             <button
@@ -64,7 +64,7 @@ export function LoginScreen({ onNavigate, onLoginSuccess }: LoginScreenProps) {
         {/* Botón de Log In */}
         <button
           onClick={onLoginSuccess}
-          className="w-full p-4 mt-4 rounded-lg border border-sky-400 text-sky-400 font-bold bg-transparent hover:bg-sky-400/20 transition-colors"
+          className="w-full p-4 mt-4 rounded-lg border border-white text-white font-bold bg-transparent hover:bg-sky-800/30 transition-colors"
         >
           Iniciar Sesión
         </button>

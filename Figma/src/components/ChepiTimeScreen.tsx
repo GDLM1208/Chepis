@@ -1,21 +1,20 @@
-import { useState, useEffect } from 'react';
 import {
+  Activity,
   ArrowLeft,
-  Sparkles,
-  Wind,
-  Eye,
-  Move,
-  Instagram,
-  Youtube,
-  Facebook,
-  Music2,
+  BookOpen,
   ChevronDown,
-  BookOpen, 
-  Activity, // <-- ESTE ES EL CORRECTO, PERDÓN!
+  Eye,
+  Facebook,
+  Instagram,
+  Move,
+  Music2, // <-- ESTE ES EL CORRECTO, PERDÓN!
   Share2,
+  Wind,
+  Youtube
 } from 'lucide-react';
-import { BottomNavigation } from './BottomNavigation';
+import { useState } from 'react';
 import SCREENS from '../constants/screens';
+import { BottomNavigation } from './BottomNavigation';
 
 interface ChepiTimeScreenProps {
   onNavigate: (screen: SCREENS) => void;
@@ -95,7 +94,7 @@ export function ChepiTimeScreen({ onNavigate, onBack }: ChepiTimeScreenProps) {
   });
 
   const [activeActivity, setActiveActivity] = useState<number | null>(null);
-  
+
   const handleShareChallenge = async (title: string) => {
     if (navigator.share) {
       try {
@@ -130,36 +129,29 @@ export function ChepiTimeScreen({ onNavigate, onBack }: ChepiTimeScreenProps) {
         >
           <ArrowLeft className="w-5 h-5 text-white" />
         </button>
-
-        <div className="bg-white/5 backdrop-blur-md rounded-3xl p-6 shadow-lg border border-white/10">
-          <div className="flex items-center gap-4">
-            <div className="relative">
-              <div className="w-20 h-20 bg-gradient-to-br from-yellow-300 to-orange-300 rounded-full flex items-center justify-center shadow-lg">
-                <div className="text-5xl">🦙</div>
-              </div>
-              <div className="absolute -bottom-1 -right-1 w-10 h-10 bg-gradient-to-br from-orange-400 to-orange-500 rounded-full flex items-center justify-center shadow-md border-3 border-white">
-                <div className="text-lg">{mode === 'focus' ? '🎧' : '🧘'}</div>
-              </div>
-            </div>
-            <div className="flex-1">
-              <h2
-                className="text-white"
-                style={{ fontSize: '24px', fontWeight: '700' }}
-              >
-                {mode === 'focus' ? 'Retos de Enfoque' : 'Modo Calma'}
-              </h2>
-              <p className="text-white/90 mt-1 text-sm">
-                {mode === 'focus'
-                  ? 'Elige un reto para desconectar y ganar XP.'
-                  : 'Respira hondo y vuelve a tu equilibrio 🌿'}
-              </p>
-            </div>
-          </div>
-        </div>
       </div>
 
       {/* --- Contenido Principal (con Pestañas) --- */}
       <div className="flex-1 px-6 pb-6 overflow-y-auto">
+        <div className="bg-white/5 backdrop-blur-md rounded-3xl pb-6 shadow-lg border border-white/10 mb-6">
+          <div className="flex flex-col items-center gap-4">
+            <img
+              src="/llama_chepi_time.png"
+              alt="Tu Llama ZEN"
+              className="w-full h-auto rounded-2xl shadow-lg"
+            />
+            <div className="text-center">
+              {/* CAMBIO: Texto blanco */}
+              <h2 className="text-white" style={{ fontSize: '24px', fontWeight: '700' }}>
+                ¡Desconexión Total!
+              </h2>
+              <p className="text-white/80 mt-1">
+                Retos para la vida real
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* --- PESTAÑAS (Tabs) --- */}
         <div className="flex bg-black/20 backdrop-blur-md rounded-xl p-1 mb-6 border border-white/10">
           <button
@@ -185,12 +177,12 @@ export function ChepiTimeScreen({ onNavigate, onBack }: ChepiTimeScreenProps) {
         {/* --- CONTENIDO MODO FOCUS (AHORA CON TARJETAS) --- */}
         {mode === 'focus' && (
           <div className="animate-fadeIn space-y-4">
-            
+
             {/* Lista de Retos de Enfoque */}
             {focusChallenges.map((challenge) => {
               const Icon = challenge.icon;
               return (
-                <div 
+                <div
                   key={challenge.id}
                   className={`rounded-2xl p-5 border border-white/10 shadow-lg ${challenge.color}`}
                 >

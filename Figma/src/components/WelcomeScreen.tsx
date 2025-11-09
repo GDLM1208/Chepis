@@ -8,19 +8,19 @@ export function WelcomeScreen({ onStart }: WelcomeScreenProps) {
       className="bg-[#0c2052] h-full w-full flex flex-col items-center justify-between p-8 cursor-pointer"
       onClick={onStart}
     >
-      <div className="max-w-[75%] h-[120px] overflow-hidden flex-1 flex items-center justify-center">
+      <div className="flex items-center justify-center">
         <img
           src="/llama-animada.gif"
           alt="Llama animada"
-          className="max-w-[650px] h-auto object-fill"
+          className="rounded-4xl max-w-[65%] h-auto object-contain"
         />
       </div>
 
       {/* Texto de Bienvenida */}
-      <div className="text-center pb-18">
-        <span className="text-white text-2xl font-bold">Hola!</span>
+      <div className="font-sans text-center pb-18">
+        <span className="text-white text-5xl font-bold">Hola!</span>
         <br />
-        <span className="text-white text-xl" >Soy Chepi</span>
+        <span className="text-white text-4xl" >Soy Chepi</span>
       </div>
 
 

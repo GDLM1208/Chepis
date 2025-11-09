@@ -11,7 +11,7 @@ export function RegisterScreen({ onNavigate, onLoginSuccess }: RegisterScreenPro
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <div className="h-full w-full bg-[#0c2052] flex flex-col items-center justify-center px-8 text-white">
+    <div className="h-full w-full bg-linear-to-b from-[#0c2052] to-sky-500 flex flex-col items-center justify-center px-8 text-white">
       {/* Logo */}
       <img
         src="/logo.png"
@@ -38,7 +38,7 @@ export function RegisterScreen({ onNavigate, onLoginSuccess }: RegisterScreenPro
           <input
             type="text"
             placeholder=""
-            className="w-full p-4 mt-2 rounded-lg bg-transparent text-white placeholder-white/70 border border-sky-400/50 focus:border-sky-400 focus:outline-none"
+            className="w-full p-4 mt-2 rounded-lg bg-white/25 text-white placeholder-white/70 border border-sky-400/50 focus:border-sky-400 focus:outline-none"
           />
         </div>
 
@@ -48,7 +48,7 @@ export function RegisterScreen({ onNavigate, onLoginSuccess }: RegisterScreenPro
           <input
             type="email"
             placeholder="hello@world.com"
-            className="w-full p-4 mt-2 rounded-lg bg-white/5 backdrop-blur-sm text-white placeholder-white/70 border border-white/10 focus:border-white/50 focus:outline-none"
+            className="w-full p-4 mt-2 rounded-lg bg-white/25 backdrop-blur-sm text-white placeholder-white/70 border border-white/10 focus:border-white/50 focus:outline-none"
           />
         </div>
 
@@ -59,7 +59,7 @@ export function RegisterScreen({ onNavigate, onLoginSuccess }: RegisterScreenPro
             <input
               type={showPassword ? 'text' : 'password'}
               placeholder=""
-              className="w-full p-4 mt-2 rounded-lg bg-transparent text-white placeholder-white/70 border border-sky-400/50 focus:border-sky-400 focus:outline-none"
+              className="w-full p-4 mt-2 rounded-lg bg-white/25 text-white placeholder-white/70 border border-sky-400/50 focus:border-sky-400 focus:outline-none"
             />
             <button
               onClick={() => setShowPassword(!showPassword)}
@@ -74,7 +74,7 @@ export function RegisterScreen({ onNavigate, onLoginSuccess }: RegisterScreenPro
         <button
           onClick={onLoginSuccess} // En una app real, esto haría el registro primero
           // CAMBIO: Botón con color Sky para destacar
-          className="w-full p-4 mt-4 rounded-lg border border-sky-400 text-sky-400 font-bold bg-transparent hover:bg-sky-400/20 transition-colors"
+          className="w-full p-4 mt-4 rounded-lg border border-white text-white font-bold bg-transparent hover:bg-sky-800/30 transition-colors"
         >
           Crear Cuenta
         </button>

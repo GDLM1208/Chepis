@@ -34,15 +34,15 @@ export function LoadingScreen() {
 
       {/* CAMBIO: Fondo con gradiente de azul oscuro a azul claro */}
       <div className="h-full w-full bg-gradient-to-b from-[#0c2052] to-sky-500 flex flex-col items-center justify-center px-8">
-        
+
         <div className="flex flex-col items-center justify-center">
 
           {/* CAMBIO: Logo 'logo.png' grande en el centro */}
-          <img 
-            src="/logo.png" 
+          <img
+            src="/logo.png"
             alt="Chepi Logo"
             // Hacemos el logo grande (80% del ancho, máximo 280px)
-            className="w-4/5 max-w-[280px] mb-16" 
+            className="w-4/5 max-w-[280px] mb-16"
           />
 
           {/* CAMBIO: Animación de 3 puntos */}
