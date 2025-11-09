@@ -1,7 +1,7 @@
 // 1. Ya no se usa 'Focus', lo quitamos de la importación
 import { Sparkles, Timer } from 'lucide-react';
-import { BottomNavigation } from './BottomNavigation';
 import SCREENS from '../constants/screens';
+import { BottomNavigation } from './BottomNavigation';
 
 interface HomeScreenProps {
   onNavigate: (screen: SCREENS) => void;
@@ -16,7 +16,7 @@ export function HomeScreen({ onNavigate }: HomeScreenProps) {
         {/* CAMBIO: Texto claro */}
         <p className="text-white/70">¡Buenos días!</p>
         <h2 className="text-white mt-1" style={{ fontSize: '28px', fontWeight: '600' }}>
-          Llama Zen
+          Haz un Chepi
         </h2>
       </div>
 
@@ -29,7 +29,7 @@ export function HomeScreen({ onNavigate }: HomeScreenProps) {
             <div className="relative">
               {/* CAMBIO: Fondo de la Llama (usando el mismo de ChepiTime) */}
               <div className="w-40 h-40 overflow-hidden bg-gradient-to-br from-yellow-300 to-orange-300 rounded-full flex items-center justify-center shadow-lg">
-                <img src="/llama.jpg" alt="Llama" style={{ height: '75%', objectFit: 'cover' }}/>
+                <img src="/pet.png" alt="Llama" style={{ objectFit: 'cover' }}/>
               </div>
               {/* Indicador de emoción (se mantiene) */}
               <div className="absolute -bottom-2 -right-2 w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center shadow-md border-4 border-white">

@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
-import { ArrowLeft, Shuffle, Play, CheckCircle2, Flame } from 'lucide-react';
-import { BottomNavigation } from './BottomNavigation';
+import { ArrowLeft, CheckCircle2, Flame, Play, Shuffle } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import SCREENS from '../constants/screens';
+import { BottomNavigation } from './BottomNavigation';
 
 interface ChepiGoScreenProps {
   onNavigate: (screen: SCREENS) => void;
@@ -42,9 +42,9 @@ export function ChepiGoScreen({ onNavigate, onBack }: ChepiGoScreenProps) {
   ];
 
   const completedToday = [
-    { name: 'Respiración consciente', xp: 15, icon: '🌬️' },
-    { name: 'Pausa de hidratación', xp: 20, icon: '💧' },
-    { name: 'Estiramiento rápido', xp: 25, icon: '🧘' },
+    { name: 'Respiración consciente', description: 'Guía para la calma', xp: 15, icon: '🌬️', completed: true },
+    { name: 'Pausa activa', description: 'Estiramientos suaves', xp: 20, icon: '🚶‍♂️‍➡️', completed: true },
+    { name: 'Descanso Visual', description: 'Relaja tus ojos', xp: 25, icon: '👁️', completed: false },
   ];
 
   useEffect(() => {
@@ -93,20 +93,27 @@ export function ChepiGoScreen({ onNavigate, onBack }: ChepiGoScreenProps) {
           <ArrowLeft className="w-5 h-5 text-white" />
         </button>
 
-        {/* Llama Zen Header */}
-        {/* CAMBIO: Tarjeta de Header sutil */}
-        <div className="bg-white/5 backdrop-blur-md rounded-3xl p-6 shadow-lg border border-white/10">
-          <div className="flex items-center gap-4">
-            <div className="relative">
-              {/* Se mantiene el color de la llama */}
-              <div className="w-20 h-20 bg-gradient-to-br from-orange-300 to-orange-400 rounded-full flex items-center justify-center shadow-lg">
-                <div className="text-5xl">🦙</div>
-              </div>
-              <div className="absolute -bottom-1 -right-1 w-10 h-10 bg-gradient-to-br from-yellow-400 to-orange-400 rounded-full flex items-center justify-center shadow-md border-3 border-white">
-                <div className="text-xl">🔥</div>
-              </div>
-            </div>
-            <div className="flex-1">
+        <div className="pb-3 pb-6">
+          {/* CAMBIO: Texto claro */}
+          <h2 className="text-white" style={{ fontSize: '28px', fontWeight: '600' }}>
+            Llama ZEN
+          </h2>
+          <p className="text-white/80">
+            Tu compañero digital para el equilibrio
+          </p>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="flex-1 px-6 pb-6 overflow-y-auto">
+        <div className="bg-white/5 backdrop-blur-md rounded-3xl pb-6 shadow-lg border border-white/10 mb-6">
+          <div className="flex flex-col items-center gap-4">
+            <img
+              src="/llama_chepi_go.jpg"
+              alt="Tu Llama ZEN"
+              className="w-full h-auto rounded-2xl shadow-lg"
+            />
+            <div className="text-center">
               {/* CAMBIO: Texto blanco */}
               <h2 className="text-white" style={{ fontSize: '24px', fontWeight: '700' }}>
                 ¡Modo Activo!
@@ -117,10 +124,36 @@ export function ChepiGoScreen({ onNavigate, onBack }: ChepiGoScreenProps) {
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Content */}
-      <div className="flex-1 px-6 pb-6 overflow-y-auto">
+        <div className="bg-white/5 backdrop-blur-md rounded-3xl p-5 shadow-lg border border-white/10 mb-6">
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-2">
+              <Flame className="w-5 h-5 text-orange-500" />
+              <h4 className="text-white" style={{ fontSize: '16px', fontWeight: '600' }}>
+                Racha diaria de enfoque
+              </h4>
+            </div>
+            <div className="flex items-center gap-1">
+              <span className="text-orange-500" style={{ fontSize: '20px', fontWeight: '700' }}>
+                {streak}
+              </span>
+              <span className="text-white/70 text-sm">días</span>
+            </div>
+          </div>
+
+          {/* Animated Progress Bar */}
+          {/* CAMBIO: Fondo de barra de progreso sutil */}
+          <div className="h-3 bg-black/30 rounded-full overflow-hidden">
+            <div
+              className="h-full bg-gradient-to-r from-orange-400 to-orange-500 rounded-full transition-all duration-500"
+              style={{ width: '80%' }} // Deberías calcular esto dinámicamente, pero se mantiene por ahora
+            />
+          </div>
+
+          <p className="text-white/70 text-sm mt-2">
+            ¡Sigue así para desbloquear un accesorio!
+          </p>
+        </div>
         {/* Challenge Card */}
         {/* CAMBIO: Tarjeta de Reto sutil */}
         <div className="bg-white/5 backdrop-blur-md rounded-3xl p-6 shadow-lg border border-white/10 mb-6">
@@ -196,38 +229,6 @@ export function ChepiGoScreen({ onNavigate, onBack }: ChepiGoScreenProps) {
           </p>
         </div>
 
-        {/* Streak Indicator */}
-        {/* CAMBIO: Tarjeta de Racha sutil */}
-        <div className="bg-white/5 backdrop-blur-md rounded-3xl p-5 shadow-lg border border-white/10 mb-6">
-          <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center gap-2">
-              <Flame className="w-5 h-5 text-orange-500" />
-              <h4 className="text-white" style={{ fontSize: '16px', fontWeight: '600' }}>
-                Racha diaria de enfoque
-              </h4>
-            </div>
-            <div className="flex items-center gap-1">
-              <span className="text-orange-500" style={{ fontSize: '20px', fontWeight: '700' }}>
-                {streak}
-              </span>
-              <span className="text-white/70 text-sm">días</span>
-            </div>
-          </div>
-
-          {/* Animated Progress Bar */}
-          {/* CAMBIO: Fondo de barra de progreso sutil */}
-          <div className="h-3 bg-black/30 rounded-full overflow-hidden">
-            <div
-              className="h-full bg-gradient-to-r from-orange-400 to-orange-500 rounded-full transition-all duration-500"
-              style={{ width: '80%' }} // Deberías calcular esto dinámicamente, pero se mantiene por ahora
-            />
-          </div>
-
-          <p className="text-white/70 text-sm mt-2">
-            ¡Casi llegas a 5 días! 🎯
-          </p>
-        </div>
-
         {/* Completed Today */}
         <div className="mb-6">
           <h4 className="text-white px-2 mb-3" style={{ fontSize: '18px', fontWeight: '600' }}>
@@ -239,9 +240,9 @@ export function ChepiGoScreen({ onNavigate, onBack }: ChepiGoScreenProps) {
               <div
                 key={index}
                 // CAMBIO: Tarjeta de Completados sutil
-                className="bg-white/5 backdrop-blur-md rounded-2xl p-4 shadow-sm border border-white/10 flex items-center gap-3"
+                className="bg-white/5 backdrop-blur-md rounded-2xl p-3 shadow-sm border border-white/10 flex items-center gap-3"
               >
-                <div className="w-11 h-11 bg-green-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                <div className="w-9 h-9 bg-green-500/20 rounded-full flex items-center justify-center flex-shrink-0">
                   <div className="text-xl">{item.icon}</div>
                 </div>
 
@@ -249,22 +250,30 @@ export function ChepiGoScreen({ onNavigate, onBack }: ChepiGoScreenProps) {
                   <p className="text-white" style={{ fontSize: '15px', fontWeight: '600' }}>
                     {item.name}
                   </p>
+                  <p className="text-white/70" style={{ fontSize: '13px' }}>
+                    {item.description}
+                  </p>
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <span className="text-green-400" style={{ fontSize: '14px', fontWeight: '700' }}>
-                    +{item.xp} XP
-                  </span>
-                  <CheckCircle2 className="w-5 h-5 text-green-400" />
+                  {item.completed ? (
+                    <>
+                      <span className="text-green-400" style={{ fontSize: '14px', fontWeight: '700' }}>
+                        +{item.xp} XP
+                      </span>
+                      <CheckCircle2 className="w-5 h-5 text-green-400" />
+                    </>
+                  ) : (
+                    <span className="text-white/70" style={{ fontSize: '14px' }}>
+                      Sin completar
+                    </span>
+                  )}
                 </div>
               </div>
             ))}
           </div>
         </div>
       </div>
-
-      {/* Bottom Navigation */}
-      {/* TODO: El BottomNavigation también necesitará un rediseño para el modo oscuro */}
       <BottomNavigation currentScreen="home" onNavigate={onNavigate} />
     </div>
   );
